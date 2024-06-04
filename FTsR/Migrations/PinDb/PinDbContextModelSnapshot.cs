@@ -21,7 +21,7 @@ namespace FTsR.Migrations.PinDb
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("FTsR.Models.PinModel", b =>
+            modelBuilder.Entity("FTsR.Models.Pin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,28 @@ namespace FTsR.Migrations.PinDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pin");
+                    b.ToTable("Pin", t =>
+                        {
+                            t.HasTrigger("TriggerName");
+                        });
+
+                    b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
+                });
+
+            modelBuilder.Entity("FTsR.Models.SavedPinModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SavedPin");
                 });
 #pragma warning restore 612, 618
         }

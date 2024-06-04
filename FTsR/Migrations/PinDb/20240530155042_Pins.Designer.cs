@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FTsR.Migrations.PinDb
 {
     [DbContext(typeof(PinDbContext))]
-    [Migration("20240511224215_Pin")]
-    partial class Pin
+    [Migration("20240530155042_Pins")]
+    partial class Pins
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace FTsR.Migrations.PinDb
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("FTsR.Models.PinModel", b =>
+            modelBuilder.Entity("FTsR.Models.Pin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,28 @@ namespace FTsR.Migrations.PinDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pin");
+                    b.ToTable("Pin", t =>
+                        {
+                            t.HasTrigger("TriggerName");
+                        });
+
+                    b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
+                });
+
+            modelBuilder.Entity("FTsR.Models.SavedPinModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SavedPin");
                 });
 #pragma warning restore 612, 618
         }

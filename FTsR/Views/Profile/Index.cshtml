@@ -8,7 +8,7 @@
         {
             <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.ProfilePicture))"
                  alt="Generic placeholder image" class="rounded-circle img-fluid img-thumbnail mt-4 mb-2"
-                 style="width: 150px; z-index: 1; height: 180px;">
+                 style="width: 150px; z-index: 1; height: 150px;">
         }
         <a asp-action="Edit" asp-route-id="@Model.Id" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark" data-mdb-ripple-color="dark"
            style="z-index: 1;">
@@ -38,6 +38,7 @@
 </div>
 <div class="card-body p-4 text-black">
 </div>
+
 @* <table class="table">
     <tr><th>Email</th><th>Год</th><th></th></tr>
     @foreach (var user in Model)

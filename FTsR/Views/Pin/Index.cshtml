@@ -7,7 +7,6 @@
 
 <div class="wrap">
     <div class="card border-0 mx-3" style="width: 18rem;">
-        @Html.ActionLink("test", "Index", "Pin", Model.Id)
         <a asp-controller="Pin" asp-action="Index" asp>
             <img id="index_img" class="card-img-top" src="data:image/jpeg;base64,
                         @(Convert.ToBase64String(Model.Image))" alt="Card image cap">

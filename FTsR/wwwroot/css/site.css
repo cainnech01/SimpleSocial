@@ -35,16 +35,16 @@ body {
     background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
 }
 
-.a.nav-link.text-dark:hover, nav-item:active {
-    background-color: black;
-    color: #fff;
-    border-radius: 30px 30px 30px 30px;
-}
-.navbar-nav li a.nav-link.text-dark:hover {
-    color: white !important;
-    background-color: black;    
-    border-radius: 30px 30px 30px 30px;
-}
+    .a.nav-link.text-dark:hover, nav-item:active {
+        background-color: black;
+        color: #fff;
+        border-radius: 30px 30px 30px 30px;
+    }
+    .navbar-nav li a.nav-link.text-dark:hover {
+        color: white !important;
+        background-color: black;    
+        border-radius: 30px 30px 30px 30px;
+    }
 
 #cardimg {
     height: 100%;
@@ -55,3 +55,51 @@ body {
     border-radius: 30px 30px 30px 30px !important;
 }
 
+#index_img {
+    border-radius: 30px 30px 30px 30px !important;
+}
+
+#index_img:hover{
+    opacity: 70%;
+}
+
+.img-wrap {
+    width: 100%;
+    height:100%;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+}
+
+    .img-wrap:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: 100%;
+    }
+
+    .img-wrap > img {
+        position: absolute;
+        height: 100%;
+        left: 50%;
+        transform: translateX( -50%);
+        top: 0;
+        right: 0;
+        margin: 0 auto;
+        bottom: 0;
+        opacity: 0;
+        transition: opacity .4s;
+    }
+
+        .img-wrap > img.tallAndNarrow {
+            width: 100%;
+            top: 50%;
+            transform: translateX(0) translateY( -50%);
+            left: 0;
+            height: auto;
+        }
+
+        .img-wrap > img.loaded {
+            opacity: 1;
+        }

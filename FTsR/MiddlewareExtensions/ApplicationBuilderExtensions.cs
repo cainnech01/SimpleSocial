@@ -17,6 +17,13 @@ namespace FTsR.MiddlewareExtensions
             var service = serviceProvider.GetService<SubscribeCompaniesTableDependency>();
             service.SubscribeTableDependency();
         }
+
+        public static void UsePinsTableDependency(this IApplicationBuilder app)
+        {
+            var serviceProvider = app.ApplicationServices;
+            var service = serviceProvider.GetService<SubscribePinsTableDependency>();
+            service.SubscribeTableDependency();
+        }
     }
 }
 

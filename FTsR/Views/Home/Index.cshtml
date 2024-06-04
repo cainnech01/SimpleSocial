@@ -1,19 +1,21 @@
-﻿@model IEnumerable<PinModel>
+﻿@model IEnumerable<Pin>
 @{
     ViewData["Title"] = "Home Page";
 }
 <a asp-controller="Home" asp-action="Upload" type="button" class="btn btn-primary btn-lg">Upload</a>
-<div class="d-flex flex-wrap flex-row">
-@if (Model != null)
+<div id="pins_row" class="d-flex flex-wrap flex-row">
+@* @if (Model != null)
     @foreach(var e in Model)
     {
         <div class="wrap">
-            <div class="card mx-3" style="width: 18rem;">
-                <img id="cardimg" class="card-img-top" src="data:image/jpeg;base64,@(Convert.ToBase64String(e.Image))" alt="Card image cap">
+            <div class="card border-0 mx-3" style="width: 18rem;">
+                    <a asp-controller="Pin" asp-action="Index" asp-route-id="@e.Id">
+                        <img id="index_img" class="card-img-top" src="data:image/jpeg;base64,
+                        @(Convert.ToBase64String(e.Image))" alt="Card image cap">
+                    </a>
                 <div class="card-body">
                     <h5 class="card-title">@e.Title</h5>
-                    <p class="card-text">@e.Description</p>
-                    <p class="card-test">
+                    <p class="card-text">
                         @if(e.AuthorProfileImage == null)
                         {
                             <img class="rounded-circle" height="25" width="25" src="/images/avatar.png" alt="Card image cap">
@@ -27,10 +29,10 @@
                 </div>
             </div>
         </div>
-    }
+    } *@
 </div>
 
-
+<script src="~/js/utils/fixAspect.js"></script>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js\jquery\dist\jquery.js"></script>
 <script src="~/js/data.js"></script>

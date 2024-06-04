@@ -34,7 +34,7 @@ public class HomeController : Controller
             imageData = binaryReader.ReadBytes((int)model.Image.Length);
         }
 
-        PinModel pin = new PinModel
+        Pin pin = new Pin
         {
             Author = User.Identity.Name,
             Title = model.Title,

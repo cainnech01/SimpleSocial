@@ -5,7 +5,7 @@
 namespace FTsR.Migrations.PinDb
 {
     /// <inheritdoc />
-    public partial class Pin : Migration
+    public partial class Pins : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,6 +26,19 @@ namespace FTsR.Migrations.PinDb
                 {
                     table.PrimaryKey("PK_Pin", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "SavedPin",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SavedPin", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -33,6 +46,9 @@ namespace FTsR.Migrations.PinDb
         {
             migrationBuilder.DropTable(
                 name: "Pin");
+
+            migrationBuilder.DropTable(
+                name: "SavedPin");
         }
     }
 }

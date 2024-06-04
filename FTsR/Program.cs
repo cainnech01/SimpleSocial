@@ -38,8 +38,10 @@ builder.Services.AddIdentity<UserModel, IdentityRole>()
         .AddEntityFrameworkStores<AuthDbContext>();
 
 builder.Services.AddSingleton<DashboardHub>();
+builder.Services.AddSingleton<DataHub>();
 builder.Services.AddSingleton<SubscribeProductTableDependency>();
-builder.Services.AddSingleton<SubscribeCompaniesTableDependency>();
+//builder.Services.AddSingleton<SubscribeCompaniesTableDependency>();
+builder.Services.AddSingleton<SubscribePinsTableDependency>();
 
 var app = builder.Build();
 
@@ -68,7 +70,8 @@ app.MapHub<DataHub>("/dataHub");
 app.MapHub<ChatHub>("/chatHub");
 
 app.UseProductTableDependency();
-app.UseCompaniesTableDependency();
+//app.UseCompaniesTableDependency();
+app.UsePinsTableDependency();
 
 app.Run();
 
